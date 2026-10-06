@@ -1,0 +1,8 @@
+## User settings
+.DS_Store
+xcuserdata/
+*.xcodeproj/xcuserdata/
+DerivedData/
+*.xcuserstate
+*.xcscmblueprint
+.env

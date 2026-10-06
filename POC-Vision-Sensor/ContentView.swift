@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+    @EnvironmentObject private var coordinator: TrialCoordinator
 
-#Preview {
-    ContentView()
+    var body: some View {
+        Group {
+            #if os(macOS)
+            MacHostView()
+            #else
+            CompanionView()
+            #endif
+        }
+        .task { coordinator.startServices() }
+        .onDisappear { coordinator.stopServices() }
+    }
 }

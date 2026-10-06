@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct POC_Vision_SensorApp: App {
+struct POCVisionSensorApp: App {
+    @StateObject private var coordinator = TrialCoordinator()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(coordinator)
         }
     }
 }
